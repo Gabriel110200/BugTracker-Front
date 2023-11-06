@@ -1,6 +1,4 @@
-*{
-    height:100%;
-}
+
 
 .login-container {
     margin: 0 auto;
@@ -10,12 +8,9 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #f7f7f7;
+    margin-top: 90px;
   }
 
-  body{
-    background: black;
-    background-size: 200% 200%;
-  }
   
   .form-group {
     margin-bottom: 15px;

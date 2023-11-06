@@ -128,7 +128,6 @@
     fill: rgb(105, 103, 103);
   }
 
-
   .card.highlight-card {
     background-color: #1976d2;
     color: white;
@@ -200,6 +199,10 @@
     color: white;
     padding: 0 1rem 1rem;
     margin: 0;
+  }
+
+  .components {
+    margin-top:70px;
   }
 
   .circle-link {
