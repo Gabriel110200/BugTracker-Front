@@ -24,9 +24,13 @@
     flex: 1;
   }
 
+
+
   .components{
     margin-top: 100px;
+    height: 100%;
   }
+
 
   .toolbar {
     position: absolute;
