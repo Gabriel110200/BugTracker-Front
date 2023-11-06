@@ -1,0 +1,25 @@
+.login-container {
+    margin: 0 auto;
+    width:80%;
+    max-width: 700px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f7f7f7;
+  }
+
+  body{
+    background: black;
+    background-size: 200% 200%;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .btn {
+    cursor: pointer;
+  }
+  
+  /* Add more custom styles as needed */
+  
