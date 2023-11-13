@@ -7,6 +7,9 @@ import { RegisterComponent } from './register/register.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LayoutComponent } from './layout/layout.component';
+import { ProjectComponent } from './project/project.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+
 
 @NgModule({
   declarations: [
@@ -14,7 +17,9 @@ import { LayoutComponent } from './layout/layout.component';
     LoginComponent,
     RegisterComponent,
     DashboardComponent,
-    LayoutComponent
+    LayoutComponent,
+    ProjectComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,

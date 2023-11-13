@@ -9,7 +9,11 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   constructor(private router: Router) {} 
 
+  
+
   onLoginClick() {
+
+    document.body.style.backgroundColor = "white";
 
     this.router.navigate(['/dashboard']);
   }

@@ -1,16 +1,14 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-layout',
-  templateUrl: './layout.component.html',
-  styleUrls: ['./layout.component.css']
+  selector: 'app-sidebar',
+  templateUrl: './sidebar.component.html',
+  styleUrls: ['./sidebar.component.css']
 })
-export class LayoutComponent {
-
+export class SidebarComponent {
   isSidebarOpen = true;
 
   toggleSidebar(): void {
     this.isSidebarOpen = !this.isSidebarOpen;
   }
-
 }

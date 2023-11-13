@@ -1,0 +1,33 @@
+/* sidebar.component.css */
+.sidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #343a40; /* Set the background color */
+    padding-top: 20px;
+    transition: width 0.3s; /* Add transition for smooth animation */
+    z-index:1;
+  }
+  
+  .nav-link {
+    color: #fff; /* Set the text color */
+  }
+  
+  .toggle-btn {
+    align-self: flex-end; /* Align the button to the top right */
+    margin-right: 10px; /* Add some margin to the right */
+    margin-top: 10px; /* Add some margin to the top */
+  }
+  
+  .collapsed-sidebar {
+    width: 70px; /* Set the width when the sidebar is collapsed */
+  }
+  
+  .collapsed-sidebar .nav-link {
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  
+  
