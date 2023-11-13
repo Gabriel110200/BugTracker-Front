@@ -5,6 +5,7 @@ import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LayoutComponent } from './layout/layout.component';
 import { ProjectComponent } from './project/project.component';
+import { TicketComponent } from './ticket/ticket.component';
 
 const routes: Routes = [
   { path: 'login', 
@@ -22,7 +23,8 @@ const routes: Routes = [
     component: LayoutComponent, 
     children: [
       { path: 'dashboard', component: DashboardComponent },
-      {path: 'project',component: ProjectComponent}
+      {path: 'project',component: ProjectComponent},
+      {path:'ticket',component:TicketComponent}
 
 
     ],

@@ -9,6 +9,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LayoutComponent } from './layout/layout.component';
 import { ProjectComponent } from './project/project.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { TicketComponent } from './ticket/ticket.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     DashboardComponent,
     LayoutComponent,
     ProjectComponent,
-    SidebarComponent
+    SidebarComponent,
+    TicketComponent
   ],
   imports: [
     BrowserModule,
