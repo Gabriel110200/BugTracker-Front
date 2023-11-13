@@ -1,5 +1,11 @@
+<div style="margin-top: 15px;">
+  <h1 class="text-center" style="font-weight: bold;">
+    <span><i class="fas fa-bug"></i></span> BugTracker
+  </h1>
+</div>
+
 <div class="container">
-    <div class="general-info">
+  <div class="general-info">
     <h1 class="text-center">Informações Gerais</h1>
     <div class="row">
       <div class="col-md-4">
@@ -13,7 +19,7 @@
       <div class="col-md-4">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Ticekts Criados</h5>
+            <h5 class="card-title">Tickets Criados</h5>
             <p class="card-text">0</p>
           </div>
         </div>
@@ -27,15 +33,52 @@
         </div>
       </div>
     </div>
-    </div>
-
-
-
-
-
-
-
-
   </div>
 
-  
+  <div class="charts-container">
+    <!-- Chart 1 -->
+    <div class="chart-container">
+      <h3 class="text-center">Status dos Tickets</h3>
+      <div class="charts">
+        <canvas baseChart class="chart"
+                [type]="'pie'"
+                [datasets]="pieChartData"
+                [labels]="pieChartLabels"
+                [options]="pieChartOptions"
+                [plugins]="pieChartPlugins"
+                [legend]="pieChartLegend">
+        </canvas>
+      </div>
+    </div>
+
+    <!-- Chart 2 -->
+    <div class="chart-container">
+      <h3 class="text-center">Categorias</h3>
+      <div class="charts">
+        <canvas baseChart class="chart"
+                [type]="'bar'"
+                [datasets]="barChartData"
+                [labels]="barChartLabels"
+                [options]="barChartOptions"
+                [plugins]="barChartPlugins"
+                [legend]="barChartLegend">
+        </canvas>
+      </div>
+    </div>
+
+    <div class="chart-container">
+      <h3 class="text-center">Bugs Durante a Semana</h3>
+      <div class="charts">
+        <canvas baseChart class="chart"
+                [type]="'line'"
+                [datasets]="lineChartData"
+                [labels]="lineChartLabels"
+                [options]="lineChartOptions"
+                [plugins]="lineChartPlugins"
+                [legend]="lineChartLegend">
+        </canvas>
+      </div>
+    </div>
+
+  </div>
+</div>
