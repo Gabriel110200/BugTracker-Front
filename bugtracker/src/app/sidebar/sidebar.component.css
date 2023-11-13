@@ -10,6 +10,10 @@
     transition: width 0.3s; /* Add transition for smooth animation */
     z-index:1;
   }
+
+  .fa-bars:hover{
+    cursor: pointer;
+  }
   
   .nav-link {
     color: #fff; /* Set the text color */
@@ -23,6 +27,14 @@
   
   .collapsed-sidebar {
     width: 70px; /* Set the width when the sidebar is collapsed */
+  }
+
+  .collapsed-items{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white; 
+    font-size: 25px;
   }
   
   .collapsed-sidebar .nav-link {

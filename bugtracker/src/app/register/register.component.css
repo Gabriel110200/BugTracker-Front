@@ -8,6 +8,10 @@
     background-color: #f7f7f7;
     margin-top: 90px;
   }
+
+  .input-group-text{
+    height:40px;
+  }
   
   .form-group {
     margin-bottom: 15px;

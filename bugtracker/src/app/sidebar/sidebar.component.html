@@ -1,16 +1,58 @@
 <!-- sidebar.component.html -->
+
 <nav class="sidebar" [ngClass]="{ 'collapsed-sidebar': !isSidebarOpen }" >
-    <button class="btn btn-dark toggle-btn" (click)="toggleSidebar()">Toggle Sidebar</button>
-    <ul class="nav flex-column">
+
+
+
+    <!-- <div class="teste" style="display: flex; flex-direction: row;">
+        <div style="width: 100%;"></div>
+        <i class="fas fa-bars" style="color: white" ></i>
+  </div> -->
+
+    <div class="fas fa-bars" *ngIf="isSidebarOpen" style="margin-left:251px;font-size: 30px;" (click)="toggleSidebar()"></div>
+    
+    <div class="fas fa-bars" *ngIf="!isSidebarOpen" style="margin-left:80px;font-size: 30px;" (click)="toggleSidebar()"></div>
+
+
+    <ul class="nav flex-column" *ngIf="isSidebarOpen" (click)="hideSidebar()">
+
+    <li class="nav-item nav-link" style="font-size: 25px;text-decoration: underline;">
+        <i class="fas fa-bug"> Bug Tracker</i>
+    </li>
+
       <li class="nav-item">
         <a class="nav-link" routerLink="/dashboard">Dashboard</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/projects">Projects</a>
+        <a class="nav-link" routerLink="/project">Projects</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" >
         <a class="nav-link" routerLink="/tickets">Tickets</a>
       </li>
+
+      <li class="nav-item" >
+        <a class="nav-link" routerLink="/login">Logout</a>
+      </li>
+
     </ul>
+
+    <ul class="nav flex-column collapsed-items" *ngIf="!isSidebarOpen">
+        <li class="nav-item">
+            <i class="fas fa-tachometer-alt"></i> 
+        </li>
+        <li class="nav-item">
+            <i class="fas fa-cogs"></i>
+        </li>
+        <li class="nav-item" >
+            <i class="fas fa-ticket-alt"></i> 
+        </li>
+
+        <li class="nav-item">
+            <i class="fas fa-sign-out-alt"></i>
+        </li>
+      </ul>
+
   </nav>
-  
+
+
+
