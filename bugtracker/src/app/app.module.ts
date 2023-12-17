@@ -10,7 +10,11 @@ import { LayoutComponent } from './layout/layout.component';
 import { ProjectComponent } from './project/project.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { TicketComponent } from './ticket/ticket.component';
-
+import { HeaderComponent } from './header/header.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ItemsLayoutComponent } from './items-layout/items-layout.component';
+import { NgxSpinnerModule } from "ngx-spinner";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 
 @NgModule({
   declarations: [
@@ -21,12 +25,17 @@ import { TicketComponent } from './ticket/ticket.component';
     LayoutComponent,
     ProjectComponent,
     SidebarComponent,
-    TicketComponent
+    TicketComponent,
+    HeaderComponent,
+    ItemsLayoutComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
-    NgChartsModule
+    NgChartsModule,
+    NgxSpinnerModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

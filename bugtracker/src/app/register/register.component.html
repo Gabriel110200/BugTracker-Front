@@ -1,7 +1,14 @@
 <div class="container">
   <h2 class="text-center"><i class="fas fa-user-plus"></i> Registro</h2>
-
-  <form>
+  <ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple"
+>
+  <p style="font-size: 20px; color: white">Registrando...</p>
+</ngx-spinner>
+  <form (ngSubmit)="onSubmit()" #form>
     <div class="form-group">
       <div class="input-group">
         <div class="input-group-prepend">

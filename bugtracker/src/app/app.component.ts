@@ -2,6 +2,9 @@
 
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import 'ngx-spinner';
+import 'sweetalert2';
+
 
 @Component({
   selector: 'app-root',
@@ -33,7 +36,7 @@ export class AppComponent implements OnInit {
         this.setBackgroundColor('linear-gradient(45deg, #0074D9, #00A5D9, #00D4D9)');
         break;
       default:
-        this.setBackgroundColor('white');
+        this.setBackgroundColor('#e8e8e8');
         break;
     }
   }

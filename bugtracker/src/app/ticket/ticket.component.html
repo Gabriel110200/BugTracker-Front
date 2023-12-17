@@ -1,96 +1,90 @@
+<app-header headerTitle="Tickets"></app-header>
+
 <div class="projects">
-    <div class="header">
-      <h1 class="text-center">Ticket</h1>
-  
-      <!-- Button to add projects -->
-      <div class="add-button">
-        <button class="btn btn-primary add-project-btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Adicionar Ticket</button>
+  <button class="btn btn-primary add-project-btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Adicionar Ticket</button>
+  <table class="table">
+    <thead class="table-light">
+      <tr>
+        <th>Ticket</th>
+        <th>Status</th>
+        <th>Descrição</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Projeto 1</td>
+        <td>Em Andamento</td>
+        <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+        <td>
+          <i class="fas fa-edit" title="Editar"></i>
+          <i class="fas fa-trash-alt" title="Excluir" ></i>
+        </td>
+      </tr>
+      <tr>
+        <td>Projeto 2</td>
+        <td>Concluído</td>
+        <td>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</td>
+        <td>
+          <i class="fas fa-edit" title="Editar" ></i>
+          <i class="fas fa-trash-alt" title="Excluir"></i>
+        </td>
+      </tr>
+      <tr>
+        <td>Projeto 3</td>
+        <td>Em Espera</td>
+        <td>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</td>
+        <td>
+          <i class="fas fa-edit" title="Editar" ></i>
+          <i class="fas fa-trash-alt" title="Excluir" ></i>
+        </td>
+      </tr>
+      <tr>
+        <td>Projeto 4</td>
+        <td>Bloqueado</td>
+        <td>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
+        <td>
+          <i class="fas fa-edit" title="Editar" ></i>
+          <i class="fas fa-trash-alt" title="Excluir" ></i>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Adicionar Projeto</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-    </div>
-  
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Ticket</th>
-          <th>Status</th>
-          <th>Descrição</th>
-          <th>Ações</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Ticket 1</td>
-          <td>Em Andamento</td>
-          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
-          <td>
-            <i class="fas fa-edit" title="Editar"></i>
-            <i class="fas fa-trash-alt" title="Excluir" ></i>
-          </td>
-        </tr>
-        <tr>
-          <td>Ticket 2</td>
-          <td>Concluído</td>
-          <td>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</td>
-          <td>
-            <i class="fas fa-edit" title="Editar" ></i>
-            <i class="fas fa-trash-alt" title="Excluir"></i>
-          </td>
-        </tr>
-        <tr>
-          <td>Ticket 3</td>
-          <td>Em Espera</td>
-          <td>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</td>
-          <td>
-            <i class="fas fa-edit" title="Editar" ></i>
-            <i class="fas fa-trash-alt" title="Excluir" ></i>
-          </td>
-        </tr>
-        <tr>
-          <td>Ticket 4</td>
-          <td>Bloqueado</td>
-          <td>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
-          <td>
-            <i class="fas fa-edit" title="Editar" ></i>
-            <i class="fas fa-trash-alt" title="Excluir" ></i>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  
-  
-  <!-- Modal -->
-  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="staticBackdropLabel">Adicionar Ticket</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form>
-            <div class="mb-3">
-              <label for="projectName" class="form-label">Nome do Projeto</label>
-              <input type="text" class="form-control" id="projectName" placeholder="Digite o nome do projeto">
-            </div>
-        
-            <div class="mb-3">
-              <label for="projectStatus" class="form-label">Status do Projeto</label>
-              <select class="form-select" id="projectStatus">
-                <option value="em-andamento">Em Andamento</option>
-                <option value="concluido">Concluído</option>
-                <option value="em-espera">Em Espera</option>
-              </select>
-            </div>
-  
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-              <button type="button" class="btn btn-primary">Salvar</button>
-            </div>
-          </form>
-        </div>
-        
-        
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="projectName" class="form-label">Nome do Projeto</label>
+            <input type="text" class="form-control" id="projectName" placeholder="Digite o nome do projeto">
+          </div>
+      
+          <div class="mb-3">
+            <label for="projectStatus" class="form-label">Status do Projeto</label>
+            <select class="form-select" id="projectStatus">
+              <option value="em-andamento">Em Andamento</option>
+              <option value="concluido">Concluído</option>
+              <option value="em-espera">Em Espera</option>
+            </select>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+            <button type="button" class="btn btn-primary">Salvar</button>
+          </div>
+        </form>
       </div>
+      
+      
     </div>
   </div>
+</div>

@@ -1,0 +1,14 @@
+.dashboard-header{
+    background: linear-gradient(to right, #87CEEB, #4682B4);
+    position: absolute;
+    top:0px;
+    padding:100px;
+    z-index: -1;
+    width: 100%;
+  }
+
+  .dashboard-title{
+    position:relative;
+    top:50px;
+    color: white;
+  }

@@ -5,7 +5,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #343a40; /* Set the background color */
+    background-color: white; /* Set the background color */
     padding-top: 20px;
     transition: width 0.3s; /* Add transition for smooth animation */
     z-index:1;
@@ -16,7 +16,7 @@
   }
   
   .nav-link {
-    color: #fff; /* Set the text color */
+    color: #343a40; /* Set the text color */
   }
   
   .toggle-btn {
@@ -33,7 +33,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: white; 
+    color: #343a40; 
     font-size: 25px;
   }
   

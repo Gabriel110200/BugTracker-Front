@@ -1,11 +1,8 @@
-<div style="margin-top: 15px;">
-  <h1 class="text-center" style="font-weight: bold;">
-    <span><i class="fas fa-bug"></i></span> BugTracker
-  </h1>
-</div>
+
+<app-header headerTitle="Dashboard"></app-header>
 
 <div class="container">
-  <div class="general-info">
+  <!-- <div class="general-info">
     <h1 class="text-center">Informações Gerais</h1>
     <div class="row">
       <div class="col-md-4">
@@ -33,50 +30,77 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
+  <h1 class="text-center">Informações Gerais</h1>
 
   <div class="charts-container">
-    <!-- Chart 1 -->
-    <div class="chart-container">
-      <h3 class="text-center">Status dos Tickets</h3>
-      <div class="charts">
-        <canvas baseChart class="chart"
-                [type]="'pie'"
-                [datasets]="pieChartData"
-                [labels]="pieChartLabels"
-                [options]="pieChartOptions"
-                [plugins]="pieChartPlugins"
-                [legend]="pieChartLegend">
-        </canvas>
+
+    <div class="card">
+      <div class="card-header">
+        Projeto por Status
+      </div>
+      <div class="card-body">
+        <div class="chart-container">
+          <div class="charts">
+            <canvas baseChart class="chart"
+                    [type]="'pie'"
+                    [datasets]="pieChartData"
+                    [labels]="pieChartLabels"
+                    [options]="pieChartOptions"
+                    [plugins]="pieChartPlugins"
+                    [legend]="pieChartLegend">
+            </canvas>
+          </div>
+        </div>
       </div>
     </div>
+
+    <!-- Chart 1 -->
+    
 
     <!-- Chart 2 -->
-    <div class="chart-container">
-      <h3 class="text-center">Categorias</h3>
-      <div class="charts">
-        <canvas baseChart class="chart"
-                [type]="'bar'"
-                [datasets]="barChartData"
-                [labels]="barChartLabels"
-                [options]="barChartOptions"
-                [plugins]="barChartPlugins"
-                [legend]="barChartLegend">
-        </canvas>
+
+
+    <div class="card">
+      <div class="card-header">
+        Projetos por categoria
+      </div>
+      <div class="card-body">
+        <div class="chart-container">
+          <div class="charts">
+            <canvas baseChart class="chart"
+                    [type]="'bar'"
+                    [datasets]="barChartData"
+                    [labels]="barChartLabels"
+                    [options]="barChartOptions"
+                    [plugins]="barChartPlugins"
+                    [legend]="barChartLegend">
+            </canvas>
+          </div>
+        </div>
+       
       </div>
     </div>
 
-    <div class="chart-container">
-      <h3 class="text-center">Bugs Durante a Semana</h3>
-      <div class="charts">
-        <canvas baseChart class="chart"
-                [type]="'line'"
-                [datasets]="lineChartData"
-                [labels]="lineChartLabels"
-                [options]="lineChartOptions"
-                [plugins]="lineChartPlugins"
-                [legend]="lineChartLegend">
-        </canvas>
+    
+
+    <div class="card">
+      <div class="card-header">
+        Ticket por Status
+      </div>
+      <div class="card-body">
+        <div class="chart-container">
+          <div class="charts">
+            <canvas baseChart class="chart"
+                    [type]="'pie'"
+                    [datasets]="pieChartData"
+                    [labels]="pieChartLabels"
+                    [options]="pieChartOptions"
+                    [plugins]="pieChartPlugins"
+                    [legend]="pieChartLegend">
+            </canvas>
+          </div>
+        </div>
       </div>
     </div>
 
