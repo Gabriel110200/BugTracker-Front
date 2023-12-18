@@ -8,13 +8,13 @@
 >
   <p style="font-size: 20px; color: white">Registrando...</p>
 </ngx-spinner>
-  <form (ngSubmit)="onSubmit()" #form>
+  <form  [formGroup]="registrationForm"  (ngSubmit)="onSubmit()">
     <div class="form-group">
       <div class="input-group">
         <div class="input-group-prepend">
           <span class="input-group-text"><i class="fas fa-user"></i></span>
         </div>
-        <input type="text" class="form-control" placeholder="Entre seu Nome">
+        <input type="text" formControlName="userName" class="form-control" placeholder="Entre seu Nome">
       </div>
     </div>
     <div class="form-group">
@@ -22,7 +22,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text"><i class="fas fa-envelope"></i></span>
         </div>
-        <input type="email" class="form-control" placeholder="Entre seu email">
+        <input type="email" formControlName="email" class="form-control" placeholder="Entre seu email">
       </div>
     </div>
     <div class="form-group">
@@ -30,7 +30,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text"><i class="fas fa-lock"></i></span>
         </div>
-        <input type="password" class="form-control" placeholder="Entre sua senha">
+        <input type="password" formControlName="password" class="form-control" placeholder="Entre sua senha">
       </div>
     </div>
     <div class="form-group">
@@ -38,7 +38,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text"><i class="fas fa-lock"></i></span>
         </div>
-        <input type="password" class="form-control" placeholder="Confirme a senha">
+        <input type="password" formControlName="confirmPassword" class="form-control" placeholder="Confirme a senha">
       </div>
     </div>
     <button type="submit" class="btn btn-primary btn-block">

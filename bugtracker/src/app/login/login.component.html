@@ -3,13 +3,21 @@
   <div class="login-container">
     <h2 class="text-center"><i class="fas fa-sign-in-alt"></i> Login</h2>
 
-    <form>
+    <form [formGroup]="LoginForm">
+      <ngx-spinner
+      bdColor="rgba(51,51,51,0.8)"
+      size="medium"
+      color="#fff"
+      type="ball-scale-multiple"
+    >
+      <p style="font-size: 20px; color: white">Aguarde...</p>
+    </ngx-spinner>
       <div class="form-group">
         <div class="input-group">
           <div class="input-group-prepend">
             <span class="input-group-text"><i class="fas fa-envelope"></i></span>
           </div>
-          <input type="text" class="form-control" placeholder="Email" />
+          <input type="text" formControlName="email" class="form-control" placeholder="Email" />
         </div>
       </div>
       <div class="form-group">
@@ -17,7 +25,7 @@
           <div class="input-group-prepend">
             <span class="input-group-text"><i class="fas fa-lock"></i></span>
           </div>
-          <input type="password" class="form-control" placeholder="Senha" />
+          <input type="password" formControlName="password" class="form-control" placeholder="Senha" />
         </div>
       </div>
       <button type="submit" class="btn btn-primary btn-block" (click)="onLoginClick()">
