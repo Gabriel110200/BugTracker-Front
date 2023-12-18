@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
 })
 export class ProjectComponent implements OnInit {
   projectForm!: FormGroup;
+  projects: any[] = [];
 
   constructor(private fb: FormBuilder, private spinner: NgxSpinnerService) {}
 
@@ -23,6 +24,11 @@ export class ProjectComponent implements OnInit {
     });
   }
 
+  onDelete(index: number) {
+    this.projects.splice(index, 1);
+    Swal.fire('Success!', 'Registro Apagado com sucesso!', 'success');
+  }
+
   onSubmit() {
 
     console.log(this.projectForm);
@@ -34,6 +40,9 @@ export class ProjectComponent implements OnInit {
       
       setTimeout(() => {
         
+        const newProject = this.projectForm.value;
+        this.projects.push(newProject);
+
         this.spinner.hide();
         Swal.fire('Success!', 'Projeto registrado com sucesso!', 'success');
       }, 2000); 
