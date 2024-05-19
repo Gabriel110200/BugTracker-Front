@@ -32,6 +32,8 @@ export class RegisterComponent implements OnInit{
     this.registrationForm = this.fb.group({
       userName: ['',Validators.required],
       email: ['',[Validators.required, Validators.email]],
+      companyName: ['',Validators.required], 
+      cnpj: ['',Validators.required],
       password: ['',[Validators.required, Validators.minLength(6)]],
       confirmPassword: ['',Validators.required]
     });
@@ -57,7 +59,9 @@ export class RegisterComponent implements OnInit{
       const user: User = {
         mail: this.registrationForm.get('email')?.value,
         password: this.registrationForm.get('password')?.value,
-        userName: this.registrationForm.get('userName')?.value
+        userName: this.registrationForm.get('userName')?.value,
+        companyName: this.registrationForm.get('companyName')?.value,
+        cnpj: this.registrationForm.get('cnpj')?.value,
       }
 
       this.userService.registerUser(user).subscribe(
