@@ -11,11 +11,12 @@ import { ProjectComponent } from './project/project.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { TicketComponent } from './ticket/ticket.component';
 import { HeaderComponent } from './header/header.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS,  HttpClientModule } from '@angular/common/http';
 import { ItemsLayoutComponent } from './items-layout/items-layout.component';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import { ReactiveFormsModule } from '@angular/forms';
+import { AuthInterceptorService } from './services/interceptors/auth-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     NgChartsModule,
@@ -39,7 +41,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS,useClass:AuthInterceptorService, multi: true }
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

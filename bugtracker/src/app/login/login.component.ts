@@ -45,7 +45,11 @@ export class LoginComponent implements OnInit {
         console.log(res);
         this.spinner.hide();
 
-        localStorage.setItem('userID', res.userId);
+        localStorage.setItem('token', res.jwt);
+
+        console.log(res.result.user);
+
+        localStorage.setItem('userId',res.result.user.id);
 
         document.body.style.backgroundColor = 'white';
         Swal.fire('Success!', 'Login realizado com sucesso!', 'success');

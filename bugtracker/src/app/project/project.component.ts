@@ -1,7 +1,17 @@
+
+interface Project {
+  projectName: string;
+  description: string;
+  isActive?: boolean;
+  status?: number;
+}
+
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ProjectService } from '../services/projects/project.service';
 import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-project',
   templateUrl: './project.component.html',
@@ -9,18 +19,34 @@ import Swal from 'sweetalert2';
 })
 export class ProjectComponent implements OnInit {
   projectForm!: FormGroup;
-  projects: any[] = [];
+  projects: Project[] = [];
 
-  constructor(private fb: FormBuilder, private spinner: NgxSpinnerService) {}
+  constructor(private fb: FormBuilder, 
+              private spinner: NgxSpinnerService, 
+              private projectService: ProjectService) {}
 
   ngOnInit() {
     this.initializeForm();
+    this.fetchProjects();
+  }
+
+  fetchProjects() {
+    this.projectService.listProjects().subscribe((res: any) => {
+      console.log(res);
+
+      this.projects = [];
+      res.array.forEach((element: any) => {
+        this.projects.push(element);
+      });
+    });
   }
 
   initializeForm() {
     this.projectForm = this.fb.group({
       projectName: ['', Validators.required],
-      description: ['', Validators.required]
+      description: ['', Validators.required],
+      Image: [null],
+      UserId: [null]
     });
   }
 
@@ -30,24 +56,20 @@ export class ProjectComponent implements OnInit {
   }
 
   onSubmit() {
+    let userId = localStorage.getItem('userId');
+    
+    this.projectForm.patchValue({ UserId: userId });
 
-    console.log(this.projectForm);
+    const project = {
+      projectName: this.projectForm.get('projectName')?.value,
+      userId: userId,
+      description: this.projectForm.get('description')?.value
+    };
 
-    if (this.projectForm.valid) {
-
-      console.log('foi');
-      this.spinner.show();
-      
-      setTimeout(() => {
-        
-        const newProject = this.projectForm.value;
-        this.projects.push(newProject);
-
-        this.spinner.hide();
-        Swal.fire('Success!', 'Projeto registrado com sucesso!', 'success');
-      }, 2000); 
-    } else {
-     
-    }
+    this.spinner.show();
+    this.projectService.registerProject(project).subscribe(res => {
+      Swal.fire('Success!', 'Projeto registrado com sucesso!', 'success');
+      this.spinner.hide();
+    });
   }
 }
