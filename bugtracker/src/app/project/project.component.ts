@@ -1,6 +1,6 @@
 
 interface Project {
-  projectName: string;
+  name: string;
   description: string;
   isActive?: boolean;
   status?: number;
@@ -32,9 +32,11 @@ export class ProjectComponent implements OnInit {
 
   fetchProjects() {
     this.projectService.listProjects().subscribe((res: any) => {
+
+      console.log('listProjects');
       console.log(res);
 
-      this.projects = [];
+      this.projects = res;
       res.array.forEach((element: any) => {
         this.projects.push(element);
       });
@@ -69,7 +71,9 @@ export class ProjectComponent implements OnInit {
     this.spinner.show();
     this.projectService.registerProject(project).subscribe(res => {
       Swal.fire('Success!', 'Projeto registrado com sucesso!', 'success');
+      this.fetchProjects();
       this.spinner.hide();
+
     });
   }
 }
