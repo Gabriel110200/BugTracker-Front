@@ -1,3 +1,8 @@
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { ProjectService } from '../services/projects/project.service';
+import Swal from 'sweetalert2';
 
 interface Project {
   name: string;
@@ -5,12 +10,6 @@ interface Project {
   isActive?: boolean;
   status?: number;
 }
-
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NgxSpinnerService } from 'ngx-spinner';
-import { ProjectService } from '../services/projects/project.service';
-import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-project',
@@ -20,6 +19,7 @@ import Swal from 'sweetalert2';
 export class ProjectComponent implements OnInit {
   projectForm!: FormGroup;
   projects: Project[] = [];
+  displayedColumns: string[] = ['name', 'description', 'actions'];
 
   constructor(private fb: FormBuilder, 
               private spinner: NgxSpinnerService, 
@@ -31,15 +31,10 @@ export class ProjectComponent implements OnInit {
   }
 
   fetchProjects() {
-    this.projectService.listProjects().subscribe((res: any) => {
-
+    this.projectService.listProjects().subscribe((res: Project[]) => {
       console.log('listProjects');
       console.log(res);
-
       this.projects = res;
-      res.array.forEach((element: any) => {
-        this.projects.push(element);
-      });
     });
   }
 
@@ -59,7 +54,6 @@ export class ProjectComponent implements OnInit {
 
   onSubmit() {
     let userId = localStorage.getItem('userId');
-    
     this.projectForm.patchValue({ UserId: userId });
 
     const project = {
@@ -73,7 +67,10 @@ export class ProjectComponent implements OnInit {
       Swal.fire('Success!', 'Projeto registrado com sucesso!', 'success');
       this.fetchProjects();
       this.spinner.hide();
-
     });
+  }
+
+  onEdit(project: Project) {
+    // Implement edit functionality if needed
   }
 }

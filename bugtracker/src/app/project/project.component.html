@@ -1,28 +1,50 @@
 <app-header headerTitle="Projetos"></app-header>
 
 <div class="projects">
-  <button class="btn btn-primary add-project-btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Adicionar Projeto</button>
-  <table class="table">
-    <thead class="table-light">
-      <tr>
-        <th>Projeto</th>
-        <th>Descrição</th>
-        <th>Ações</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let project of projects; let i = index">
-        <td>{{ project.name }}</td>
-        <td>{{ project.description }}</td>
-        <td>
-          <i class="fas fa-edit" title="Editar"></i>
-          <i class="fas fa-trash-alt" title="Excluir" (click)="onDelete(i)"></i>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+  <button *ngIf="projects.length === 0" mat-raised-button color="primary" class="add-project-btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Adicionar Projeto</button>
+  
+  <table mat-table [dataSource]="projects" class="mat-elevation-z8 table">
 
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef class="text-center"> Projeto </th>
+      <td mat-cell *matCellDef="let project" class="text-center"> {{project.name}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef class="text-center"> Descrição </th>
+      <td mat-cell *matCellDef="let project" class="text-center"> {{project.description}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef class="text-center"> Ações </th>
+      <td mat-cell class="text-center" *matCellDef="let project; let i = index">
+
+        <button mat-icon-button data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="text-center">
+          <mat-icon>add</mat-icon>
+        </button>
+
+        <button mat-icon-button (click)="onEdit(project)" class="text-center">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button (click)="onDelete(i)" class="text-center">
+          <mat-icon>delete</mat-icon>
+        </button>
+
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+
+  <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons
+                 aria-label="Select page of periodic elements">
+  </mat-paginator> -->
+
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -34,26 +56,17 @@
       </div>
       <div class="modal-body">
         <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
-
-          <ngx-spinner
-          bdColor="rgba(51,51,51,0.8)"
-          size="medium"
-          color="#fff"
-          type="ball-scale-multiple"
-        >
-          <p style="font-size: 20px; color: white">Aguarde...</p>
-        </ngx-spinner>
+          <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+            <p style="font-size: 20px; color: white">Aguarde...</p>
+          </ngx-spinner>
           <div class="mb-3">
             <label for="projectName" class="form-label">Nome do Projeto</label>
             <input type="text" class="form-control" id="projectName" formControlName="projectName" placeholder="Digite o nome do projeto">
           </div>
-
           <div class="mb-3">
             <label for="description" class="form-label">Descrição do Projeto</label>
             <input type="text" class="form-control" id="description" formControlName="description" placeholder="Digite a descrição do projeto">
           </div>
-
-
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
             <button type="submit" class="btn btn-primary">Salvar</button>
@@ -63,4 +76,3 @@
     </div>
   </div>
 </div>
-

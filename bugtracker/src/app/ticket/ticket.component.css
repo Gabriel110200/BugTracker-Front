@@ -3,25 +3,21 @@
   text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  align-items: end;
+  justify-content: center;
+  align-items: center;
 }
 
-.add-project-btn {
-  width:200px;
-  margin-right: 380px;
-  padding: 2px 10px;
-
-
+.add-ticket-btn {
+  width: 200px;
+  padding: 10px;
+  margin: 20px 0;
 }
 
-
-
-.fa-edit,.fa-trash-alt{
+.fa-edit, .fa-trash-alt {
   font-size: 20px;
 }
 
-.fa-edit:hover,.fa-trash-alt:hover{
+.fa-edit:hover, .fa-trash-alt:hover {
   cursor: pointer;
   color: red;
 }
@@ -31,4 +27,8 @@
   max-width: 1200px;
   min-width: 400px;
   margin: 0 auto;
+}
+
+.text-center {
+  text-align: center;
 }

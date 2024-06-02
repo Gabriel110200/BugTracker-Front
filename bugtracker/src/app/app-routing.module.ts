@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LayoutComponent } from './layout/layout.component';
 import { ProjectComponent } from './project/project.component';
 import { TicketComponent } from './ticket/ticket.component';
+import { CreateTicketComponent } from './ticket/create-ticket/create-ticket.component';
 
 const routes: Routes = [
   { path: 'login', 
@@ -24,7 +25,8 @@ const routes: Routes = [
     children: [
       { path: 'dashboard', component: DashboardComponent },
       {path: 'project',component: ProjectComponent},
-      {path:'ticket',component:TicketComponent}
+      { path:'ticket',component:TicketComponent},
+      {path:'create-ticket',component:CreateTicketComponent}
 
 
     ],

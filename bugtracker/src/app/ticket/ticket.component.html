@@ -1,99 +1,91 @@
 <app-header headerTitle="Tickets"></app-header>
 
 <div class="projects">
-  <button class="btn btn-primary add-project-btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Adicionar Ticket</button>
-  <table class="table">
-    <thead class="table-light">
-      <tr>
-        <th>Ticket</th>
-        <th>Status</th>
-        <th>Descrição</th>
-        <th>Ações</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Projeto 1</td>
-        <td>Em Andamento</td>
-        <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
-        <td>
-          <i class="fas fa-edit" title="Editar"></i>
-          <i class="fas fa-trash-alt" title="Excluir" ></i>
-        </td>
-      </tr>
-      <tr>
-        <td>Projeto 2</td>
-        <td>Concluído</td>
-        <td>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</td>
-        <td>
-          <i class="fas fa-edit" title="Editar" ></i>
-          <i class="fas fa-trash-alt" title="Excluir"></i>
-        </td>
-      </tr>
-      <tr>
-        <td>Projeto 3</td>
-        <td>Em Espera</td>
-        <td>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</td>
-        <td>
-          <i class="fas fa-edit" title="Editar" ></i>
-          <i class="fas fa-trash-alt" title="Excluir" ></i>
-        </td>
-      </tr>
-      <tr>
-        <td>Projeto 4</td>
-        <td>Bloqueado</td>
-        <td>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
-        <td>
-          <i class="fas fa-edit" title="Editar" ></i>
-          <i class="fas fa-trash-alt" title="Excluir" ></i>
-        </td>
-      </tr>
-    </tbody>
+  <button *ngIf="tickets.length === 0" mat-raised-button color="primary" class="add-ticket-btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Adicionar Ticket</button>
+  
+  <table mat-table *ngIf="tickets.length > 0" [dataSource]="tickets" class="mat-elevation-z8 table">
+
+    <!-- Ticket Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef class="text-center"> Ticket </th>
+      <td mat-cell *matCellDef="let ticket" class="text-center"> {{ticket.name}} </td>
+    </ng-container>
+
+    <!-- Status Column -->
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef class="text-center"> Status </th>
+      <td mat-cell *matCellDef="let ticket" class="text-center"> {{ticket.status}} </td>
+    </ng-container>
+
+    <!-- Description Column -->
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef class="text-center"> Descrição </th>
+      <td mat-cell *matCellDef="let ticket" class="text-center"> {{ticket.description}} </td>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef class="text-center"> Ações </th>
+      <td mat-cell class="text-center" *matCellDef="let ticket; let i = index">
+        <button mat-icon-button (click)="onEdit(ticket)" class="text-center">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button (click)="onDelete(i)" class="text-center">
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button mat-icon-button data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="text-center">
+          <mat-icon>add</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
   </table>
 </div>
-
 
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Adicionar Projeto</h1>
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Adicionar Ticket</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form>
+        <form [formGroup]="ticketForm" (ngSubmit)="onSubmit()">
           <div class="mb-3">
-            <label for="projectName" class="form-label">Nome do Projeto</label>
-            <input type="text" class="form-control" id="projectName" placeholder="Digite o nome do projeto">
+            <label for="ticketName" class="form-label">Nome do Ticket</label>
+            <input type="text" class="form-control" id="ticketName" formControlName="name" placeholder="Digite o nome do ticket">
           </div>
-      
           <div class="mb-3">
-            <label for="projectStatus" class="form-label">Status do Projeto</label>
-            <select class="form-select" id="projectStatus">
+            <label for="ticketStatus" class="form-label">Status do Ticket</label>
+            <select class="form-select" id="ticketStatus" formControlName="status">
               <option value="em-andamento">Em Andamento</option>
               <option value="concluido">Concluído</option>
               <option value="em-espera">Em Espera</option>
+              <option value="bloqueado">Bloqueado</option>
             </select>
           </div>
-
           <div class="mb-3">
-            <label for="projectStatus" class="form-label">Status do Projeto</label>
-            <select class="form-select" id="projectStatus">
-              <option value="1">Em Andamento</option>
-              <option value="2">Concluído</option>
-              <option value="3">Em Espera</option>
+            <label for="ticketStatus" class="form-label">Tipo do Ticket</label>
+            <select class="form-select" id="ticketStatus" formControlName="status">
+              <option value="bug">Correção</option>
+              <option value="feature">Feature</option>
+              <option value="em-espera">Melhoria</option>
             </select>
           </div>
-
+          <div class="mb-3">
+            <label for="ticketDescription" class="form-label">Descrição do Ticket</label>
+            <textarea class="form-control" id="ticketDescription" formControlName="description" rows="3" placeholder="Digite a descrição do ticket"></textarea>
+          </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-            <button type="button" class="btn btn-primary">Salvar</button>
+            <button type="submit" class="btn btn-primary">Salvar</button>
           </div>
         </form>
       </div>
-      
-      
     </div>
   </div>
 </div>

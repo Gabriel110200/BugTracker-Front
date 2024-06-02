@@ -17,7 +17,15 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptorService } from './services/interceptors/auth-interceptor.service';
-
+import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
+import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
+import { CreateTicketComponent } from './ticket/create-ticket/create-ticket.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatStepperModule} from '@angular/material/stepper';
+import { MatButtonModule } from '@angular/material/button';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +37,8 @@ import { AuthInterceptorService } from './services/interceptors/auth-interceptor
     SidebarComponent,
     TicketComponent,
     HeaderComponent,
-    ItemsLayoutComponent
+    ItemsLayoutComponent,
+    CreateTicketComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +48,15 @@ import { AuthInterceptorService } from './services/interceptors/auth-interceptor
     NgChartsModule,
     NgxSpinnerModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTableModule,
+    MatButtonModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatStepperModule,
+    MatInputModule,
+    MatPaginatorModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS,useClass:AuthInterceptorService, multi: true }
