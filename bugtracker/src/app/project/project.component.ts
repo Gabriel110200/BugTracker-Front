@@ -21,9 +21,9 @@ export class ProjectComponent implements OnInit {
   projects: Project[] = [];
   displayedColumns: string[] = ['name', 'description', 'actions'];
 
-  constructor(private fb: FormBuilder, 
-              private spinner: NgxSpinnerService, 
-              private projectService: ProjectService) {}
+  constructor(private fb: FormBuilder,
+    private spinner: NgxSpinnerService,
+    private projectService: ProjectService) { }
 
   ngOnInit() {
     this.initializeForm();

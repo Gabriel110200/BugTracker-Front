@@ -26,6 +26,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatStepperModule} from '@angular/material/stepper';
 import { MatButtonModule } from '@angular/material/button';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import { AddCategoryModalComponent } from './add-category-modal/add-category-modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +43,8 @@ import { MatButtonModule } from '@angular/material/button';
     TicketComponent,
     HeaderComponent,
     ItemsLayoutComponent,
-    CreateTicketComponent
+    CreateTicketComponent,
+    AddCategoryModalComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +62,10 @@ import { MatButtonModule } from '@angular/material/button';
     MatSelectModule,
     MatStepperModule,
     MatInputModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatNativeDateModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS,useClass:AuthInterceptorService, multi: true }

@@ -18,7 +18,7 @@ export class TicketComponent {
   ticketForm!: FormGroup;
   displayedColumns: string[] = ['name', 'status', 'description', 'actions'];
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
     this.initializeForm();

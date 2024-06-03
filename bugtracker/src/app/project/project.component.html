@@ -1,8 +1,9 @@
 <app-header headerTitle="Projetos"></app-header>
 
 <div class="projects">
-  <button *ngIf="projects.length === 0" mat-raised-button color="primary" class="add-project-btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Adicionar Projeto</button>
-  
+  <button *ngIf="projects.length === 0" mat-raised-button color="primary" class="add-project-btn" data-bs-toggle="modal"
+    data-bs-target="#staticBackdrop">Adicionar Projeto</button>
+
   <table mat-table [dataSource]="projects" class="mat-elevation-z8 table">
 
     <ng-container matColumnDef="name">
@@ -47,7 +48,8 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -61,11 +63,13 @@
           </ngx-spinner>
           <div class="mb-3">
             <label for="projectName" class="form-label">Nome do Projeto</label>
-            <input type="text" class="form-control" id="projectName" formControlName="projectName" placeholder="Digite o nome do projeto">
+            <input type="text" class="form-control" id="projectName" formControlName="projectName"
+              placeholder="Digite o nome do projeto">
           </div>
           <div class="mb-3">
             <label for="description" class="form-label">Descrição do Projeto</label>
-            <input type="text" class="form-control" id="description" formControlName="description" placeholder="Digite a descrição do projeto">
+            <input type="text" class="form-control" id="description" formControlName="description"
+              placeholder="Digite a descrição do projeto">
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>

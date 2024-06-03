@@ -1,43 +1,117 @@
 <app-header headerTitle="Tickets"></app-header>
 
 <div class="container">
-
-<button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+    <!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
     {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
-  </button>
-  <mat-stepper [linear]="isLinear" #stepper>
-    <mat-step [stepControl]="firstFormGroup">
-      <form [formGroup]="firstFormGroup">
-        <ng-template matStepLabel>Fill out your name</ng-template>
-        <mat-form-field>
-          <mat-label>Name</mat-label>
-          <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-        </mat-form-field>
-        <div>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </form>
-    </mat-step>
-    <mat-step [stepControl]="secondFormGroup" label="Fill out your address">
-      <form [formGroup]="secondFormGroup">
-        <mat-form-field>
-          <mat-label>Address</mat-label>
-          <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-                 required>
-        </mat-form-field>
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </form>
-    </mat-step>
-    <mat-step>
-      <ng-template matStepLabel>Done</ng-template>
-      <p>You are now done.</p>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="stepper.reset()">Reset</button>
-      </div>
-    </mat-step>
-  </mat-stepper>
+  </button> -->
+    <mat-stepper [linear]="isLinear" #stepper>
+        <mat-step [stepControl]="ticketForm">
+            <form [formGroup]="ticketForm">
+                <ng-template matStepLabel>Enter Ticket Details</ng-template>
+
+                <div class="row">
+
+                    <mat-form-field class="col-6">
+                        <mat-label>Title</mat-label>
+                        <input matInput formControlName="title" placeholder="Enter ticket title" required>
+                        <mat-error>Title cannot be empty!</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="col-6">
+                        <mat-label>Priority</mat-label>
+                        <mat-select formControlName="priority">
+                            <mat-option *ngFor="let priority of priorities" [value]="priority">
+                                {{priority}}
+                            </mat-option>
+                        </mat-select>
+
+                        <mat-error>Please select a Priority!</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="col-6">
+                        <mat-label>Status</mat-label>
+                        <mat-select formControlName="status">
+                            <mat-option *ngFor="let status of statuses" [value]="status">
+                                {{status}}
+                            </mat-option>
+                        </mat-select>
+
+                        <mat-error>Please select a Status!</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="col-6">
+                        <mat-label>Type</mat-label>
+                        <mat-select formControlName="type">
+                            <mat-option *ngFor="let type of types" [value]="type">
+                                {{type}}
+                            </mat-option>
+                        </mat-select>
+
+                        <mat-error>Please select a Type!</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="col-6">
+                        <mat-label>Project</mat-label>
+                        <mat-select formControlName="projectId">
+                            <mat-option *ngFor="let project of projects" [value]="project.id">
+                                {{ project.name }}
+                            </mat-option>
+                        </mat-select>
+
+                        <mat-error>Please select or create a new project!</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="col-6">
+                        <mat-label>Deadline</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="deadline"
+                            placeholder="Choose a deadline">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+
+                        <mat-error>Please pick a Deadline!</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="col-6">
+                        <mat-label>Category</mat-label>
+                        <mat-select formControlName="category">
+                            <mat-option *ngFor="let category of categories" [value]="category.id">
+                                {{ category.name }}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error>Please select a category!</mat-error>
+                    </mat-form-field>
+
+                    <div class="col-6">
+                        <button mat-button (click)="openAddCategoryModal()" class="btn btn-secondary btn-sm">Add
+                            Category</button>
+                    </div>
+
+
+                    <mat-form-field class="col-12">
+                        <mat-label>Summary</mat-label>
+                        <textarea matInput formControlName="message" placeholder="Enter message"></textarea>
+                        <mat-error>Please enter a summary of the request!</mat-error>
+                    </mat-form-field>
+
+
+                </div>
+
+
+                <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button matStepperNext>Next</button>
+
+                </div>
+            </form>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Review </ng-template>
+            <p>Are you sure you would like to submit? </p>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button (click)="stepper.reset()">Reset</button>
+                <button mat-button (click)="onSubmit()">Submit</button>
+            </div>
+        </mat-step>
+    </mat-stepper>
 </div>

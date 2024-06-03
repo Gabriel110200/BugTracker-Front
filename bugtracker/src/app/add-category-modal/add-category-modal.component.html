@@ -1,0 +1,23 @@
+<div class="container">
+    <h2>Add New Category</h2>
+
+    <div class="row">
+
+        <div class="col-6">
+            <form [formGroup]="categoryForm">
+
+                <mat-form-field>
+                    <mat-label>Category Name</mat-label>
+                    <input matInput formControlName="name">
+                    <mat-error>Name is required</mat-error>
+                </mat-form-field>
+            </form>
+        </div>
+
+        <div class="col-12">
+            <button mat-button (click)="onSubmit()">Save Category</button>
+
+        </div>
+    </div>
+
+</div>

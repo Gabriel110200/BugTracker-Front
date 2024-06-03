@@ -1,8 +1,9 @@
 <app-header headerTitle="Tickets"></app-header>
 
 <div class="projects">
-  <button *ngIf="tickets.length === 0" mat-raised-button color="primary" class="add-ticket-btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Adicionar Ticket</button>
-  
+  <button *ngIf="tickets.length === 0" mat-raised-button color="primary" class="add-ticket-btn" data-bs-toggle="modal"
+    data-bs-target="#staticBackdrop">Adicionar Ticket</button>
+
   <table mat-table *ngIf="tickets.length > 0" [dataSource]="tickets" class="mat-elevation-z8 table">
 
     <!-- Ticket Name Column -->
@@ -46,7 +47,8 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -57,7 +59,8 @@
         <form [formGroup]="ticketForm" (ngSubmit)="onSubmit()">
           <div class="mb-3">
             <label for="ticketName" class="form-label">Nome do Ticket</label>
-            <input type="text" class="form-control" id="ticketName" formControlName="name" placeholder="Digite o nome do ticket">
+            <input type="text" class="form-control" id="ticketName" formControlName="name"
+              placeholder="Digite o nome do ticket">
           </div>
           <div class="mb-3">
             <label for="ticketStatus" class="form-label">Status do Ticket</label>
@@ -78,7 +81,8 @@
           </div>
           <div class="mb-3">
             <label for="ticketDescription" class="form-label">Descrição do Ticket</label>
-            <textarea class="form-control" id="ticketDescription" formControlName="description" rows="3" placeholder="Digite a descrição do ticket"></textarea>
+            <textarea class="form-control" id="ticketDescription" formControlName="description" rows="3"
+              placeholder="Digite a descrição do ticket"></textarea>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
