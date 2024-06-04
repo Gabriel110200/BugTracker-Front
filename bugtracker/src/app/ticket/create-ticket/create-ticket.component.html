@@ -7,25 +7,25 @@
     <mat-stepper [linear]="isLinear" #stepper>
         <mat-step [stepControl]="ticketForm">
             <form [formGroup]="ticketForm">
-                <ng-template matStepLabel>Enter Ticket Details</ng-template>
+                <ng-template matStepLabel>Entre os detalhes do ticket!</ng-template>
 
                 <div class="row">
 
                     <mat-form-field class="col-6">
-                        <mat-label>Title</mat-label>
-                        <input matInput formControlName="title" placeholder="Enter ticket title" required>
-                        <mat-error>Title cannot be empty!</mat-error>
+                        <mat-label>Titulo</mat-label>
+                        <input matInput formControlName="title" placeholder="Entre o titulo do Ticket" required>
+                        <mat-error>Titulo não pode estar vazio!</mat-error>
                     </mat-form-field>
 
                     <mat-form-field class="col-6">
-                        <mat-label>Priority</mat-label>
+                        <mat-label>Prioridade</mat-label>
                         <mat-select formControlName="priority">
                             <mat-option *ngFor="let priority of priorities" [value]="priority">
                                 {{priority}}
                             </mat-option>
                         </mat-select>
 
-                        <mat-error>Please select a Priority!</mat-error>
+                        <mat-error>Por favor, selecione uma prioridade!</mat-error>
                     </mat-form-field>
 
                     <mat-form-field class="col-6">
@@ -36,61 +36,61 @@
                             </mat-option>
                         </mat-select>
 
-                        <mat-error>Please select a Status!</mat-error>
+                        <mat-error>Por favor,selecione um stats!</mat-error>
                     </mat-form-field>
 
                     <mat-form-field class="col-6">
-                        <mat-label>Type</mat-label>
+                        <mat-label>Tipo</mat-label>
                         <mat-select formControlName="type">
                             <mat-option *ngFor="let type of types" [value]="type">
                                 {{type}}
                             </mat-option>
                         </mat-select>
 
-                        <mat-error>Please select a Type!</mat-error>
+                        <mat-error>Por favor, selecione um tipo!</mat-error>
                     </mat-form-field>
 
                     <mat-form-field class="col-6">
-                        <mat-label>Project</mat-label>
+                        <mat-label>Projeto</mat-label>
                         <mat-select formControlName="projectId">
                             <mat-option *ngFor="let project of projects" [value]="project.id">
                                 {{ project.name }}
                             </mat-option>
                         </mat-select>
 
-                        <mat-error>Please select or create a new project!</mat-error>
+                        <mat-error>Por favor, selecione ou crie um novo projeto</mat-error>
                     </mat-form-field>
 
                     <mat-form-field class="col-6">
-                        <mat-label>Deadline</mat-label>
+                        <mat-label>Prazo</mat-label>
                         <input matInput [matDatepicker]="picker" formControlName="deadline"
-                            placeholder="Choose a deadline">
+                            placeholder="Escolha uma data para o prazo">
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
 
-                        <mat-error>Please pick a Deadline!</mat-error>
+                        <mat-error>Por favor escolha um prazo!</mat-error>
                     </mat-form-field>
 
                     <mat-form-field class="col-6">
-                        <mat-label>Category</mat-label>
+                        <mat-label>Categoria</mat-label>
                         <mat-select formControlName="category">
                             <mat-option *ngFor="let category of categories" [value]="category.id">
                                 {{ category.name }}
                             </mat-option>
                         </mat-select>
-                        <mat-error>Please select a category!</mat-error>
+                        <mat-error>Por favor, selecione uma categoria!</mat-error>
                     </mat-form-field>
 
                     <div class="col-6">
-                        <button mat-button (click)="openAddCategoryModal()" class="btn btn-secondary btn-sm">Add
-                            Category</button>
+                        <button mat-button (click)="openAddCategoryModal()" class="btn btn-secondary btn-sm">Adicionar 
+                            Categoria</button>
                     </div>
 
 
                     <mat-form-field class="col-12">
-                        <mat-label>Summary</mat-label>
-                        <textarea matInput formControlName="message" placeholder="Enter message"></textarea>
-                        <mat-error>Please enter a summary of the request!</mat-error>
+                        <mat-label>Resumo</mat-label>
+                        <textarea matInput formControlName="message" placeholder="Entre o resumo da solicitação"></textarea>
+                        <mat-error>Por favor, entre o resumo do pedido!</mat-error>
                     </mat-form-field>
 
 
@@ -98,19 +98,19 @@
 
 
                 <div>
-                    <button mat-button matStepperPrevious>Back</button>
-                    <button mat-button matStepperNext>Next</button>
+                    <button mat-button matStepperPrevious>Voltar</button>
+                    <button mat-button matStepperNext>Próximo</button>
 
                 </div>
             </form>
         </mat-step>
         <mat-step>
-            <ng-template matStepLabel>Review </ng-template>
-            <p>Are you sure you would like to submit? </p>
+            <ng-template matStepLabel>Revisão </ng-template>
+            <p>Tem certeza que deseja submeter essas alterações? </p>
             <div>
-                <button mat-button matStepperPrevious>Back</button>
-                <button mat-button (click)="stepper.reset()">Reset</button>
-                <button mat-button (click)="onSubmit()">Submit</button>
+                <button mat-button matStepperPrevious>Voltar</button>
+                <button mat-button (click)="stepper.reset()">Resetar</button>
+                <button mat-button (click)="onSubmit()">Enviar</button>
             </div>
         </mat-step>
     </mat-stepper>

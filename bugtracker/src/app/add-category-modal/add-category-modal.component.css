@@ -1,0 +1,7 @@
+.button{
+    background-color: linear-gradient(to right, #87CEEB, #4682B4);
+    color: white;
+    position:absolute; 
+    bottom:30px;
+    width:90%;
+}

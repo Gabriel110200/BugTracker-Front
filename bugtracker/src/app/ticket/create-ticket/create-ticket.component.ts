@@ -78,7 +78,7 @@ export class CreateTicketComponent implements OnInit {
 
   openAddCategoryModal() {
     const dialogRef = this.dialog.open(AddCategoryModalComponent, {
-      width: '500px',
+      width: '250px',
       height: '300px'
     });
 

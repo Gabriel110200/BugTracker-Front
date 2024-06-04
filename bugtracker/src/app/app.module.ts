@@ -30,6 +30,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import { AddCategoryModalComponent } from './add-category-modal/add-category-modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { CreateProjectComponent } from './project/create-project/create-project/create-project.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     HeaderComponent,
     ItemsLayoutComponent,
     CreateTicketComponent,
-    AddCategoryModalComponent
+    AddCategoryModalComponent,
+    CreateProjectComponent
   ],
   imports: [
     BrowserModule,

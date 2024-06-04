@@ -57,9 +57,11 @@ export class ProjectComponent implements OnInit {
     this.projectForm.patchValue({ UserId: userId });
 
     const project = {
-      projectName: this.projectForm.get('projectName')?.value,
-      userId: userId,
-      description: this.projectForm.get('description')?.value
+
+      ProjectName: this.projectForm.get('projectName')?.value,
+      UserId: userId,
+      Description: this.projectForm.get('description')?.value
+    
     };
 
     this.spinner.show();

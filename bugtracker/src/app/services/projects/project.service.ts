@@ -7,31 +7,24 @@ import { Observable } from 'rxjs';
 })
 export class ProjectService {
 
-
   private baseUrl = 'https://localhost:5001/api/Project';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-
-  registerProject(project: any): Observable<any>{
-
+  registerProject(project: any): Observable<any> {
     const url = `${this.baseUrl}/CreateProject`
-    return this.http.post(url,project);
-
+    return this.http.post(url, project);
   }
 
-  listProjects(): Observable<any>{
 
+  listProjects(): Observable<any> {
     const url = `${this.baseUrl}/list`
     return this.http.get(url);
-
   }
 
-  deleteProject(id: any): Observable<any>{
-
-    const url = `${this.baseUrl}/delete/`  + id; 
-    return this.http.delete(url); 
-
+  deleteProject(id: any): Observable<any> {
+    const url = `${this.baseUrl}/delete/` + id;
+    return this.http.delete(url);
   }
 
 }
