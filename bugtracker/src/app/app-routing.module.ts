@@ -7,6 +7,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { ProjectComponent } from './project/project.component';
 import { TicketComponent } from './ticket/ticket.component';
 import { CreateTicketComponent } from './ticket/create-ticket/create-ticket.component';
+import { CreateProjectComponent } from './project/create-project/create-project/create-project.component';
 
 const routes: Routes = [
   { path: 'login', 
@@ -26,7 +27,8 @@ const routes: Routes = [
       { path: 'dashboard', component: DashboardComponent },
       {path: 'project',component: ProjectComponent},
       { path:'ticket',component:TicketComponent},
-      {path:'create-ticket',component:CreateTicketComponent}
+      {path:'create-ticket',component:CreateTicketComponent},
+      {path:'create-project',component:CreateProjectComponent}
 
 
     ],
