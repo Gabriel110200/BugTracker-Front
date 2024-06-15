@@ -5,6 +5,7 @@ import { ProjectService } from '../services/projects/project.service';
 import Swal from 'sweetalert2';
 
 interface Project {
+  id: string;
   name: string;
   description: string;
   isActive?: boolean;
@@ -48,8 +49,17 @@ export class ProjectComponent implements OnInit {
   }
 
   onDelete(index: number) {
-    this.projects.splice(index, 1);
-    Swal.fire('Success!', 'Registro Apagado com sucesso!', 'success');
+
+    this.spinner.show();
+
+    this.projectService.deleteProject(this.projects[index].id).subscribe(res => {
+
+      Swal.fire('Success!', 'Registro Apagado com sucesso!', 'success');
+      this.spinner.hide();
+      this.fetchProjects();
+          
+    }); 
+
   }
 
   onSubmit() {

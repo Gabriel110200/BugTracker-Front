@@ -5,6 +5,7 @@ import { ProjectService } from 'src/app/services/projects/project.service';
 import { Category } from 'src/app/interfaces/CategoryInterface';
 import { AddCategoryModalComponent } from 'src/app/add-category-modal/add-category-modal.component';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSelectChange } from '@angular/material/select';
 
 enum TicketPriority {
   Low = 0,
@@ -42,19 +43,34 @@ export class CreateTicketComponent implements OnInit {
     private projectService: ProjectService,
     private dialog: MatDialog) { }
 
-  ngOnInit() {
-    this.ticketForm = this._formBuilder.group({
-      title: ['', Validators.required],
-      priority: ['', Validators.required],
-      status: ['', Validators.required],
-      type: ['', Validators.required],
-      message: ['', Validators.required],
-      deadline: ['', Validators.required],
-      projectId: ['', Validators.required]
-    });
-
-    this.fetchProjects();
-  }
+    ngOnInit() {
+      this.ticketForm = this._formBuilder.group({
+        title: ['', Validators.required],
+        priority: ['', Validators.required],
+        status: ['', Validators.required],
+        type: ['', Validators.required],
+        message: ['', Validators.required],
+        deadline: ['', Validators.required],
+        projectId: ['', Validators.required],
+        stepsToReproduce: [''],
+        expectedBehavior: ['']
+      });
+    
+      this.fetchProjects();
+    
+      this.ticketForm.get('type')?.valueChanges.subscribe(type => {
+        if (type == TicketTypeEnum.Bug) {
+          this.ticketForm.get('stepsToReproduce')?.setValidators([Validators.required]);
+          this.ticketForm.get('expectedBehavior')?.setValidators([Validators.required]);
+        } else {
+          this.ticketForm.get('stepsToReproduce')?.clearValidators();
+          this.ticketForm.get('expectedBehavior')?.clearValidators();
+        }
+        this.ticketForm.get('stepsToReproduce')?.updateValueAndValidity();
+        this.ticketForm.get('expectedBehavior')?.updateValueAndValidity();
+      });
+    }
+    
 
   fetchProjects() {
     this.projectService.listProjects().subscribe((res: Project[]) => {
@@ -62,6 +78,24 @@ export class CreateTicketComponent implements OnInit {
       console.log(res);
       this.projects = res;
     });
+  }
+
+  onTypeChange(event: MatSelectChange) {
+    console.log('Selected Value:', event);
+
+
+    this.ticketForm.get('type')?.valueChanges.subscribe(type => {
+      if (type == TicketTypeEnum.Bug) {
+        this.ticketForm.get('stepsToReproduce')?.setValidators([Validators.required]);
+        this.ticketForm.get('expectedBehavior')?.setValidators([Validators.required]);
+      } else {
+        this.ticketForm.get('stepsToReproduce')?.clearValidators();
+        this.ticketForm.get('expectedBehavior')?.clearValidators();
+      }
+      this.ticketForm.get('stepsToReproduce')?.updateValueAndValidity();
+      this.ticketForm.get('expectedBehavior')?.updateValueAndValidity();
+    });
+
   }
 
   get priorities() {

@@ -41,7 +41,7 @@
 
                     <mat-form-field class="col-6">
                         <mat-label>Tipo</mat-label>
-                        <mat-select formControlName="type">
+                        <mat-select formControlName="type" (selectionChange)="onTypeChange($event)">
                             <mat-option *ngFor="let type of types" [value]="type">
                                 {{type}}
                             </mat-option>
@@ -86,6 +86,19 @@
                             Categoria</button>
                     </div>
 
+
+                    <mat-form-field class="col-6" *ngIf="ticketForm.get('type')?.value == 'Bug'">
+                        <mat-label>Passos para Reproduzir</mat-label>
+                        <textarea matInput formControlName="stepsToReproduce" placeholder="Passos para Reproduzir"></textarea>
+                        <mat-error *ngIf="ticketForm.get('stepsToReproduce')?.invalid">Por favor, entre os passos necessários para reproduzir o problema!</mat-error>
+                      </mat-form-field>
+                      
+                      <mat-form-field class="col-6" *ngIf="ticketForm.get('type')?.value == 'Bug'">
+                        <mat-label>Comportamento esperado</mat-label>
+                        <textarea matInput formControlName="expectedBehavior" placeholder="Descreva o comportamento esperado"></textarea>
+                        <mat-error *ngIf="ticketForm.get('expectedBehavior')?.invalid">Por favor, descreva o comportamento esperado!</mat-error>
+                      </mat-form-field>
+                      
 
                     <mat-form-field class="col-12">
                         <mat-label>Resumo</mat-label>

@@ -31,7 +31,7 @@ import {MatNativeDateModule} from '@angular/material/core';
 import { AddCategoryModalComponent } from './add-category-modal/add-category-modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CreateProjectComponent } from './project/create-project/create-project/create-project.component';
-
+import { MatSlideToggle, MatSlideToggleModule } from '@angular/material/slide-toggle';
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,7 +67,8 @@ import { CreateProjectComponent } from './project/create-project/create-project/
     MatPaginatorModule,
     MatDatepickerModule,
     MatDialogModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSlideToggleModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS,useClass:AuthInterceptorService, multi: true }

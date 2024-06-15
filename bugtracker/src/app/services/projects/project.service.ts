@@ -23,8 +23,8 @@ export class ProjectService {
   }
 
   deleteProject(id: any): Observable<any> {
-    const url = `${this.baseUrl}/delete/` + id;
-    return this.http.delete(url);
+    const url = `${this.baseUrl}/` + id;
+    return this.http.delete(url, { responseType: 'text' });
   }
 
 }
