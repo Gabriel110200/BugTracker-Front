@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { TicketService } from '../services/tickets/ticket.service';
+import { Ticket } from '../model/ticket.model';
+import { Router } from '@angular/router';
+import { TicketTypeEnum,TicketStatusEnum,TicketPriority } from '../enum/ticket.enum';
+import Swal from 'sweetalert2';
 
-interface Ticket {
-  name: string;
-  status: string;
-  description: string;
-}
+
 
 @Component({
   selector: 'app-ticket',
@@ -14,11 +15,14 @@ interface Ticket {
 })
 export class TicketComponent {
 
-  tickets: Ticket[] = [];
+  tickets: any[] = [];
   ticketForm!: FormGroup;
-  displayedColumns: string[] = ['name', 'status', 'description', 'actions'];
+  displayedColumns: string[] = ['name', 'status', 'type', 'description', 'actions'];
 
-  constructor(private fb: FormBuilder) { }
+  TicketTypeEnum = TicketTypeEnum;
+  TicketStatusEnum = TicketStatusEnum;
+
+  constructor(private fb: FormBuilder, private ticketService: TicketService,private router: Router) { }
 
   ngOnInit() {
     this.initializeForm();
@@ -26,15 +30,24 @@ export class TicketComponent {
   }
 
   fetchTickets() {
-    // Fetch the tickets from your service or API
-    // For demonstration, we're using static data
-    this.tickets = [
-      { name: 'Ticket 1', status: 'Em Andamento', description: 'teste' },
-      { name: 'Ticket 2', status: 'Concluído', description: 'teste' },
-      { name: 'Ticket 3', status: 'Em Espera', description: 'teste' },
-      { name: 'Ticket 4', status: 'Bloqueado', description: 'teste' },
-    ];
+
+    this.ticketService.getTickets().subscribe((tickets: any[]) => { 
+
+      console.log(tickets);
+
+      this.tickets = tickets;
+
+
+
+     });
+
   }
+
+
+  getEnumLabel(enumObj: any, value: number): string {
+    return Object.keys(enumObj).find(key => enumObj[key] === value);
+  }
+
 
   initializeForm() {
     this.ticketForm = this.fb.group({
@@ -48,8 +61,19 @@ export class TicketComponent {
     // Handle the edit action
   }
 
+  onAdd(){
+    this.router.navigate(['/create-ticket']);
+  }
+
   onDelete(index: number) {
-    this.tickets.splice(index, 1);
+
+    this.ticketService.deleteTicket(this.tickets[index].id).subscribe((res: any) => {
+
+      Swal.fire('Success', 'Ticket deletado com sucesso!', 'success');
+      this.fetchTickets();
+
+    })
+
   }
 
   onSubmit() {

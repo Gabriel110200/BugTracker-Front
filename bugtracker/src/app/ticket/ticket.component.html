@@ -1,21 +1,29 @@
 <app-header headerTitle="Tickets"></app-header>
 
 <div class="projects">
-  <button *ngIf="tickets.length === 0" mat-raised-button color="primary" class="add-ticket-btn" data-bs-toggle="modal"
-    data-bs-target="#staticBackdrop">Adicionar Ticket</button>
+  <button *ngIf="tickets.length === 0" mat-raised-button color="primary" class="add-ticket-btn" (click)="onAdd()">Adicionar Ticket</button>
 
   <table mat-table *ngIf="tickets.length > 0" [dataSource]="tickets" class="mat-elevation-z8 table">
 
     <!-- Ticket Name Column -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef class="text-center"> Ticket </th>
-      <td mat-cell *matCellDef="let ticket" class="text-center"> {{ticket.name}} </td>
+      <td mat-cell *matCellDef="let ticket" class="text-center"> {{ticket.title}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef class="text-center"> Tipo </th>
+      <td mat-cell *matCellDef="let ticket" class="text-center"> 
+        {{getEnumLabel(TicketTypeEnum, ticket.type)}} 
+      </td>
     </ng-container>
 
     <!-- Status Column -->
     <ng-container matColumnDef="status">
       <th mat-header-cell *matHeaderCellDef class="text-center"> Status </th>
-      <td mat-cell *matCellDef="let ticket" class="text-center"> {{ticket.status}} </td>
+      <td mat-cell *matCellDef="let ticket" class="text-center">
+        {{ getEnumLabel(TicketStatusEnum, ticket.status) }}
+      </td>
     </ng-container>
 
     <!-- Description Column -->
@@ -34,7 +42,7 @@
         <button mat-icon-button (click)="onDelete(i)" class="text-center">
           <mat-icon>delete</mat-icon>
         </button>
-        <button mat-icon-button data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="text-center">
+        <button mat-icon-button (click)="onAdd()" class="text-center">
           <mat-icon>add</mat-icon>
         </button>
       </td>
@@ -44,52 +52,4 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
   </table>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-  aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Adicionar Ticket</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form [formGroup]="ticketForm" (ngSubmit)="onSubmit()">
-          <div class="mb-3">
-            <label for="ticketName" class="form-label">Nome do Ticket</label>
-            <input type="text" class="form-control" id="ticketName" formControlName="name"
-              placeholder="Digite o nome do ticket">
-          </div>
-          <div class="mb-3">
-            <label for="ticketStatus" class="form-label">Status do Ticket</label>
-            <select class="form-select" id="ticketStatus" formControlName="status">
-              <option value="em-andamento">Em Andamento</option>
-              <option value="concluido">Concluído</option>
-              <option value="em-espera">Em Espera</option>
-              <option value="bloqueado">Bloqueado</option>
-            </select>
-          </div>
-          <div class="mb-3">
-            <label for="ticketStatus" class="form-label">Tipo do Ticket</label>
-            <select class="form-select" id="ticketStatus" formControlName="status">
-              <option value="bug">Correção</option>
-              <option value="feature">Feature</option>
-              <option value="em-espera">Melhoria</option>
-            </select>
-          </div>
-          <div class="mb-3">
-            <label for="ticketDescription" class="form-label">Descrição do Ticket</label>
-            <textarea class="form-control" id="ticketDescription" formControlName="description" rows="3"
-              placeholder="Digite a descrição do ticket"></textarea>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-            <button type="submit" class="btn btn-primary">Salvar</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
 </div>

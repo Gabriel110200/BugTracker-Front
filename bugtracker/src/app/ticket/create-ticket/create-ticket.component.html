@@ -20,7 +20,7 @@
                     <mat-form-field class="col-6">
                         <mat-label>Prioridade</mat-label>
                         <mat-select formControlName="priority">
-                            <mat-option *ngFor="let priority of priorities" [value]="priority">
+                            <mat-option *ngFor="let priority of priorities" [value]="TicketPriority[priority]">
                                 {{priority}}
                             </mat-option>
                         </mat-select>
@@ -31,7 +31,7 @@
                     <mat-form-field class="col-6">
                         <mat-label>Status</mat-label>
                         <mat-select formControlName="status">
-                            <mat-option *ngFor="let status of statuses" [value]="status">
+                            <mat-option *ngFor="let status of statuses" [value]="TicketStatusEnum[status]">
                                 {{status}}
                             </mat-option>
                         </mat-select>
@@ -42,7 +42,7 @@
                     <mat-form-field class="col-6">
                         <mat-label>Tipo</mat-label>
                         <mat-select formControlName="type" (selectionChange)="onTypeChange($event)">
-                            <mat-option *ngFor="let type of types" [value]="type">
+                            <mat-option *ngFor="let type of types" [value]="TicketTypeEnum[type]">
                                 {{type}}
                             </mat-option>
                         </mat-select>
@@ -87,13 +87,13 @@
                     </div>
 
 
-                    <mat-form-field class="col-6" *ngIf="ticketForm.get('type')?.value == 'Bug'">
+                    <mat-form-field class="col-6" *ngIf="ticketForm.get('type')?.value == 1">
                         <mat-label>Passos para Reproduzir</mat-label>
                         <textarea matInput formControlName="stepsToReproduce" placeholder="Passos para Reproduzir"></textarea>
                         <mat-error *ngIf="ticketForm.get('stepsToReproduce')?.invalid">Por favor, entre os passos necessários para reproduzir o problema!</mat-error>
                       </mat-form-field>
                       
-                      <mat-form-field class="col-6" *ngIf="ticketForm.get('type')?.value == 'Bug'">
+                      <mat-form-field class="col-6" *ngIf="ticketForm.get('type')?.value == 1">
                         <mat-label>Comportamento esperado</mat-label>
                         <textarea matInput formControlName="expectedBehavior" placeholder="Descreva o comportamento esperado"></textarea>
                         <mat-error *ngIf="ticketForm.get('expectedBehavior')?.invalid">Por favor, descreva o comportamento esperado!</mat-error>

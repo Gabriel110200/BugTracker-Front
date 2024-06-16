@@ -23,7 +23,7 @@ export class TicketService {
 
   deleteTicket(id: any): Observable<any>{
     const url = `${this.baseUrl}/${id}`; 
-    return this.http.delete(url);
+    return this.http.delete(url, { responseType: 'text' });
   }
 
   getTickets():Observable<any>{

@@ -6,6 +6,9 @@ import { Category } from 'src/app/interfaces/CategoryInterface';
 import { AddCategoryModalComponent } from 'src/app/add-category-modal/add-category-modal.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSelectChange } from '@angular/material/select';
+import { TicketService } from 'src/app/services/tickets/ticket.service';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 enum TicketPriority {
   Low = 0,
@@ -39,8 +42,14 @@ export class CreateTicketComponent implements OnInit {
   isLinear: boolean = true;
   categories: Category[] = [];
 
+  TicketStatusEnum = TicketStatusEnum;
+  TicketPriority = TicketPriority;
+  TicketTypeEnum = TicketTypeEnum;
+
   constructor(private _formBuilder: FormBuilder,
     private projectService: ProjectService,
+    private ticketService: TicketService,
+    private router: Router, 
     private dialog: MatDialog) { }
 
     ngOnInit() {
@@ -126,6 +135,27 @@ export class CreateTicketComponent implements OnInit {
   }
 
   onSubmit() {
+    if (this.ticketForm.valid) {
+      const newTicket = this.ticketForm.value;
 
+
+
+      this.ticketService.registerTicket(newTicket).subscribe({
+        next: (response) => {
+          Swal.fire('Success', 'Ticket criado com sucesso!', 'success'); 
+          this.router.navigate(['/ticket']);
+        },
+        error: (error) => {
+          console.error('Error creating ticket:', error);
+          Swal.fire('Error', 'Error durante a criação de ticket', 'error');
+        }
+      });
+    } else {
+      for (const key of Object.keys(this.ticketForm.controls)) {
+        this.ticketForm.controls[key].markAsTouched();
+      }
+      console.error('Form is not valid.');
+    }
   }
+  
 }
