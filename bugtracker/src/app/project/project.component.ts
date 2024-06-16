@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ProjectService } from '../services/projects/project.service';
+import { Router } from '@angular/router'; // Import the Router module
+
 import Swal from 'sweetalert2';
 
 interface Project {
@@ -24,7 +26,8 @@ export class ProjectComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private spinner: NgxSpinnerService,
-    private projectService: ProjectService) { }
+    private projectService: ProjectService,
+    private router: Router) { } // Add the 'router' parameter to the constructor
 
   ngOnInit() {
     this.initializeForm();
@@ -62,6 +65,12 @@ export class ProjectComponent implements OnInit {
 
   }
 
+  onAdd(){
+
+    this.router.navigate(['/create-project']);
+
+  }
+
   onSubmit() {
     let userId = localStorage.getItem('userId');
     this.projectForm.patchValue({ UserId: userId });
@@ -83,6 +92,6 @@ export class ProjectComponent implements OnInit {
   }
 
   onEdit(project: Project) {
-    // Implement edit functionality if needed
+    this.router.navigate(['/edit-project'], { state: { data: project } });
   }
 }

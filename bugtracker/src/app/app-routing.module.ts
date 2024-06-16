@@ -8,6 +8,7 @@ import { ProjectComponent } from './project/project.component';
 import { TicketComponent } from './ticket/ticket.component';
 import { CreateTicketComponent } from './ticket/create-ticket/create-ticket.component';
 import { CreateProjectComponent } from './project/create-project/create-project/create-project.component';
+import { EditProjectComponent } from './project/edit-project/edit-project.component';
 
 const routes: Routes = [
   { path: 'login', 
@@ -28,7 +29,8 @@ const routes: Routes = [
       {path: 'project',component: ProjectComponent},
       { path:'ticket',component:TicketComponent},
       {path:'create-ticket',component:CreateTicketComponent},
-      {path:'create-project',component:CreateProjectComponent}
+      {path:'create-project',component:CreateProjectComponent}, 
+      {path: 'edit-project',component:EditProjectComponent}
 
 
     ],

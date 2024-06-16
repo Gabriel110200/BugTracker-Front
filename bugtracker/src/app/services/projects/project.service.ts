@@ -22,6 +22,11 @@ export class ProjectService {
     return this.http.get(url);
   }
 
+  updateProject(project:any): Observable<any>{
+    const url = `${this.baseUrl}/UpdateProject`
+    return this.http.put(url, project);
+  }
+
   deleteProject(id: any): Observable<any> {
     const url = `${this.baseUrl}/` + id;
     return this.http.delete(url, { responseType: 'text' });

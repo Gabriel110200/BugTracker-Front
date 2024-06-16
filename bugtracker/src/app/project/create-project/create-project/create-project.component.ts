@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ProjectService } from 'src/app/services/projects/project.service';
+import { Router } from '@angular/router'; // Import the Router module
+
 import Swal from 'sweetalert2';
 
 @Component({
@@ -19,7 +21,7 @@ export class CreateProjectComponent {
     statusCtrl: ['', Validators.required] 
   });
 
-  constructor(private _formBuilder: FormBuilder, private projectService: ProjectService) {}
+  constructor(private _formBuilder: FormBuilder, private projectService: ProjectService, private router: Router) {} 
 
   submit() {
     const projectData = {
@@ -35,6 +37,7 @@ export class CreateProjectComponent {
       next: (res) => {
         console.log(res);
         Swal.fire('Success!', 'Projeto criado com sucesso!', 'success');
+        this.router.navigate([ '/project' ]);
       },
       error: (err) => {
         console.error('Error:', err);

@@ -21,7 +21,7 @@
       <th mat-header-cell *matHeaderCellDef class="text-center"> Ações </th>
       <td mat-cell class="text-center" *matCellDef="let project; let i = index">
 
-        <button mat-icon-button data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="text-center">
+        <button mat-icon-button (click)="onAdd()" class="text-center">
           <mat-icon>add</mat-icon>
         </button>
 

@@ -1,0 +1,50 @@
+<app-header headerTitle="Editar Projeto"></app-header>
+
+<div class="container mt-3">
+  <mat-stepper [linear]="true" #stepper>
+    <mat-step [stepControl]="editFormGroup">
+      <form [formGroup]="editFormGroup">
+        <ng-template matStepLabel>Atualize os dados do projeto</ng-template>
+
+        <mat-form-field class="w-100 mb-3">
+          <mat-label>Nome</mat-label>
+          <input matInput placeholder="Nome do projeto" formControlName="nameCtrl" required>
+          <mat-error>Por favor, insira o nome do projeto</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="w-100 mb-3">
+          <mat-label>Descrição</mat-label>
+          <textarea matInput placeholder="Descrição do projeto" formControlName="descriptionCtrl" rows="3"></textarea>
+          <mat-error>Por favor, insira a descrição do projeto</mat-error>
+        </mat-form-field>
+
+        <mat-slide-toggle formControlName="visibilityCtrl" class="mb-3">Visibilidade</mat-slide-toggle>
+
+        <mat-form-field class="w-100 mb-3">
+          <mat-label>Status</mat-label>
+          <mat-select formControlName="statusCtrl">
+            <mat-option value="1">Em desenvolvimento</mat-option>
+            <mat-option value="2">Em produção</mat-option>
+            <mat-option value="3">Estável</mat-option>
+            <mat-option value="0">Obsoleto</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <div>
+
+          <button mat-button matStepperNext>Próximo</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Concluído</ng-template>
+      <p>Você completou o preenchimento do formulário. Tem certeza que deseja concluir? </p>
+      <div>
+        <button mat-button matStepperPrevious>Voltar</button>
+        <button mat-button (click)="stepper.reset()">Reiniciar</button>
+        <button mat-button (click)="submit()">Enviar</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
+</div>

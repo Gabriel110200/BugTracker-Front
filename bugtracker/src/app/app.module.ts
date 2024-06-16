@@ -32,6 +32,7 @@ import { AddCategoryModalComponent } from './add-category-modal/add-category-mod
 import { MatDialogModule } from '@angular/material/dialog';
 import { CreateProjectComponent } from './project/create-project/create-project/create-project.component';
 import { MatSlideToggle, MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { EditProjectComponent } from './project/edit-project/edit-project.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +47,8 @@ import { MatSlideToggle, MatSlideToggleModule } from '@angular/material/slide-to
     ItemsLayoutComponent,
     CreateTicketComponent,
     AddCategoryModalComponent,
-    CreateProjectComponent
+    CreateProjectComponent,
+    EditProjectComponent
   ],
   imports: [
     BrowserModule,
