@@ -33,6 +33,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { CreateProjectComponent } from './project/create-project/create-project/create-project.component';
 import { MatSlideToggle, MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { EditProjectComponent } from './project/edit-project/edit-project.component';
+import { UpdateTicketComponent } from './ticket/update-ticket/update-ticket.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +49,8 @@ import { EditProjectComponent } from './project/edit-project/edit-project.compon
     CreateTicketComponent,
     AddCategoryModalComponent,
     CreateProjectComponent,
-    EditProjectComponent
+    EditProjectComponent,
+    UpdateTicketComponent
   ],
   imports: [
     BrowserModule,

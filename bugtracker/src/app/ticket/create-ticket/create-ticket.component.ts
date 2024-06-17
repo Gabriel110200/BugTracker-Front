@@ -61,6 +61,7 @@ export class CreateTicketComponent implements OnInit {
         message: ['', Validators.required],
         deadline: ['', Validators.required],
         projectId: ['', Validators.required],
+        categoryName:[null],
         stepsToReproduce: [''],
         expectedBehavior: ['']
       });

@@ -1,9 +1,6 @@
 <app-header headerTitle="Tickets"></app-header>
 
 <div class="container">
-    <!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
-    {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
-  </button> -->
     <mat-stepper [linear]="isLinear" #stepper>
         <mat-step [stepControl]="ticketForm">
             <form [formGroup]="ticketForm">
@@ -73,8 +70,8 @@
 
                     <mat-form-field class="col-6">
                         <mat-label>Categoria</mat-label>
-                        <mat-select formControlName="category">
-                            <mat-option *ngFor="let category of categories" [value]="category.id">
+                        <mat-select formControlName="categoryName">
+                            <mat-option *ngFor="let category of categories" [value]="category.name">
                                 {{ category.name }}
                             </mat-option>
                         </mat-select>
