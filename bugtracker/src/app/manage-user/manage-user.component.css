@@ -1,0 +1,30 @@
+.users {
+    margin-top: 80px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+
+  fa-edit, .fa-trash-alt {
+    font-size: 20px;
+  }
+  
+  .fa-edit:hover, .fa-trash-alt:hover {
+    cursor: pointer;
+    color: red;
+  }
+  
+  .table {
+    width: 60%;
+    max-width: 1200px;
+    min-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  

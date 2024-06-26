@@ -7,8 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
-  pieChartData: any[] = [{ data: [30, 30, 30], backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'], label: 'Tickets Status' }];
-  pieChartLabels: string[] = ['Abertos', 'Em Andamento', 'Concluídos'];
+
+  //projetos por status
+  pieChartData: any[] = [{ data: [3, 1, 2, 0], backgroundColor: ['#3498db', '#e74c3c', '#f1c40f', '#2ecc71'], label: 'Project Status' }];
+  pieChartLabels: string[] = ['Em desenvolvimento', 'Em produção', 'estável', 'Obsoleto'];
 
   pieChartOptions: any = {
     responsive: true,
@@ -18,9 +20,10 @@ export class DashboardComponent {
   pieChartLegend = true;
   pieChartPlugins = [];
 
-  // New data for the second chart (you can customize it)
-  barChartData: any[] = [{ data: [30, 30, 30], backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'], label: 'Tickets Status' }];
-  barChartLabels: string[] = ['Categoria 1', 'Categoria 2', 'Categoria 3', 'Categoria 4'];
+
+  //categorias
+  barChartData: any[] = [{ data: [3, 5, 1], backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'], label: 'Tickets Status' }];
+  barChartLabels: string[] = ['Front end', 'Back end', 'Suporte'];
 
   barChartOptions: any = {
     responsive: true,
@@ -31,11 +34,13 @@ export class DashboardComponent {
   barChartPlugins = [];
 
 
+  //bugs durante meses
+
   // New data and options for the line chart (Projects)
   lineChartData: any[] = [
-    { data: [10, 20, 15, 25, 30], label: 'Bugs durante a semana' }
+    { data: [1,5,0,0], label: 'Bugs durante os meses' }
   ];
-  lineChartLabels: string[] = ['Semana 1', 'Semana 2', 'Semana 3', 'Semana 4', 'Semana 5'];
+  lineChartLabels: string[] = ['Maio', 'Junho','Julho','Agosto'];
 
   lineChartOptions: any = {
     responsive: true,
@@ -45,5 +50,19 @@ export class DashboardComponent {
 
   lineChartLegend = true;
   lineChartPlugins = [];
+
+
+  //ticket por status
+  ticketChartData: any[] = [{ data: [1, 5, 2, 1], backgroundColor: ['#219C90', '#FFF455', '#FFC700', '#EE4E4E'], label: 'Ticket Status' }];
+  ticketChartLabels: string[] = ['Pronto para desenvolver', 'Em Progresso', 'QA', 'Pronto Para Produção'];
+
+
+  ticketChartOptions: any = {
+    responsive: true,
+    maintainAspectRatio: false
+  };
+
+  ticketChartLegend = true;
+  ticketChartPlugins = [];
 
 }

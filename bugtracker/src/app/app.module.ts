@@ -34,6 +34,11 @@ import { CreateProjectComponent } from './project/create-project/create-project/
 import { MatSlideToggle, MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { EditProjectComponent } from './project/edit-project/edit-project.component';
 import { UpdateTicketComponent } from './ticket/update-ticket/update-ticket.component';
+import { ManageUserComponent } from './manage-user/manage-user.component';
+import { UpdateUserComponent } from './manage-user/update-user/update-user.component';
+import { CreateUserComponent } from './manage-user/create-user/create-user.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +55,10 @@ import { UpdateTicketComponent } from './ticket/update-ticket/update-ticket.comp
     AddCategoryModalComponent,
     CreateProjectComponent,
     EditProjectComponent,
-    UpdateTicketComponent
+    UpdateTicketComponent,
+    ManageUserComponent,
+    UpdateUserComponent,
+    CreateUserComponent,
   ],
   imports: [
     BrowserModule,

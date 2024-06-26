@@ -58,7 +58,10 @@ export class TicketComponent {
   }
 
   onEdit(ticket: Ticket) {
-    // Handle the edit action
+
+    console.log(ticket);
+
+    this.router.navigate(['/edit-ticket'], { state: { data: ticket } });
   }
 
   onAdd(){

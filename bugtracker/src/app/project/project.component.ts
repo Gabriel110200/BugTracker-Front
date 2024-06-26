@@ -47,7 +47,8 @@ export class ProjectComponent implements OnInit {
       projectName: ['', Validators.required],
       description: ['', Validators.required],
       Image: [null],
-      UserId: [null]
+      UserId: [null],
+      CompanyId: [null]
     });
   }
 
@@ -71,25 +72,6 @@ export class ProjectComponent implements OnInit {
 
   }
 
-  onSubmit() {
-    let userId = localStorage.getItem('userId');
-    this.projectForm.patchValue({ UserId: userId });
-
-    const project = {
-
-      ProjectName: this.projectForm.get('projectName')?.value,
-      UserId: userId,
-      Description: this.projectForm.get('description')?.value
-    
-    };
-
-    this.spinner.show();
-    this.projectService.registerProject(project).subscribe(res => {
-      Swal.fire('Success!', 'Projeto registrado com sucesso!', 'success');
-      this.fetchProjects();
-      this.spinner.hide();
-    });
-  }
 
   onEdit(project: Project) {
     this.router.navigate(['/edit-project'], { state: { data: project } });

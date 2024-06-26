@@ -1,66 +1,105 @@
 <div class="container">
   <h2 class="text-center"><i class="fas fa-user-plus"></i> Registro</h2>
   <ngx-spinner
-  bdColor="rgba(51,51,51,0.8)"
-  size="medium"
-  color="#fff"
-  type="ball-scale-multiple"
->
-  <p style="font-size: 20px; color: white">Registrando...</p>
-</ngx-spinner>
-  <form  [formGroup]="registrationForm"  (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text"><i class="fas fa-user"></i></span>
-        </div>
-        <input type="text" formControlName="userName" class="form-control" placeholder="Entre seu Nome">
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text"><i class="fas fa-user"></i></span>
-        </div>
-        <input type="text" formControlName="companyName" class="form-control" placeholder="Entre o nome da sua empresa">
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text"><i class="fas fa-user"></i></span>
-        </div>
-        <input type="text" formControlName="cnpj" class="form-control" placeholder="Entre o CNPJ">
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-        </div>
-        <input type="email" formControlName="email" class="form-control" placeholder="Entre seu email">
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text"><i class="fas fa-lock"></i></span>
-        </div>
-        <input type="password" formControlName="password" class="form-control" placeholder="Entre sua senha">
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text"><i class="fas fa-lock"></i></span>
-        </div>
-        <input type="password" formControlName="confirmPassword" class="form-control" placeholder="Confirme a senha">
-      </div>
-    </div>
+    bdColor="rgba(51,51,51,0.8)"
+    size="medium"
+    color="#fff"
+    type="ball-scale-multiple">
+    <p style="font-size: 20px; color: white">Registrando...</p>
+  </ngx-spinner>
+  <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+
+    <div class="row">
+
+    <mat-form-field appearance="fill">
+      <mat-label>Nome</mat-label>
+      <mat-icon matPrefix>person</mat-icon>
+      <input matInput type="text" formControlName="userName" placeholder="Entre seu Nome">
+      <mat-error *ngIf="registrationForm.get('userName').hasError('required')">
+        Nome é obrigatório.
+      </mat-error>
+    </mat-form-field>
+
+  </div>
+
+  <div class="row">
+
+    <mat-form-field appearance="fill">
+      <mat-label>Nome da Empresa</mat-label>
+      <mat-icon matPrefix>business</mat-icon>
+      <input matInput type="text" formControlName="companyName" placeholder="Entre o nome da sua empresa">
+      <mat-error *ngIf="registrationForm.get('companyName').hasError('required')">
+        Nome da Empresa é obrigatório.
+      </mat-error>
+    </mat-form-field>
+
+  </div>
+
+  <div class="row">
+
+    <mat-form-field appearance="fill">
+      <mat-label>CNPJ</mat-label>
+      <mat-icon matPrefix>badge</mat-icon>
+      <input matInput type="text" formControlName="cnpj" placeholder="Entre o CNPJ">
+      <mat-error *ngIf="registrationForm.get('cnpj').hasError('required')">
+        CNPJ é obrigatório.
+      </mat-error>
+    </mat-form-field>
 
 
-    <button type="submit" class="btn btn-primary btn-block">
-      <i class="fas fa-user-plus"></i> Registre-se
+  </div>
+
+
+  <div class="row">
+
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <mat-icon matPrefix>email</mat-icon>
+      <input matInput type="email" formControlName="email" placeholder="Entre seu email">
+      <mat-error *ngIf="registrationForm.get('email').hasError('required')">
+        Email é obrigatório.
+      </mat-error>
+      <mat-error *ngIf="registrationForm.get('email').hasError('email')">
+        Entre um email válido.
+      </mat-error>
+    </mat-form-field>
+
+  </div>
+
+  <div class="row">
+
+    <mat-form-field appearance="fill">
+      <mat-label>Senha</mat-label>
+      <mat-icon matPrefix>lock</mat-icon>
+      <input matInput type="password" formControlName="password" placeholder="Entre sua senha">
+      <mat-error *ngIf="registrationForm.get('password').hasError('required')">
+        Senha é obrigatório.
+      </mat-error>
+      <mat-error *ngIf="registrationForm.get('password').hasError('minlength')">
+        Senha deve ter no mínimo 6 caracteres.
+      </mat-error>
+    </mat-form-field>
+
+  </div>
+
+  <div class="row">
+
+    <mat-form-field appearance="fill">
+      <mat-label>Confirme a Senha</mat-label>
+      <mat-icon matPrefix>lock</mat-icon>
+      <input matInput type="password" formControlName="confirmPassword" placeholder="Confirme a senha">
+      <mat-error *ngIf="registrationForm.get('confirmPassword').hasError('required')">
+        Confirmação de Senha é obrigatório.
+      </mat-error>
+      <mat-error *ngIf="registrationForm.get('confirmPassword').hasError('passwordMismatch')">
+        Senhas não conferem.
+      </mat-error>
+    </mat-form-field>
+
+  </div>
+
+    <button  color="primary" class="btn btn-primary"  type="submit">
+      <mat-icon>person_add</mat-icon> Registre-se
     </button>
   </form>
 

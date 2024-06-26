@@ -1,0 +1,51 @@
+<app-header headerTitle="Users"></app-header>
+
+<div class="container mt-3">
+  <mat-stepper [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Preencha dados do usuário</ng-template>
+        
+        <mat-form-field class="w-100 mb-3">
+          <mat-label>Nome</mat-label>
+          <input matInput placeholder="Nome do usuário" formControlName="firstCtrl" required>
+          <mat-error>Por favor insira o nome do usuário</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="w-100 mb-3">
+          <mat-label>Email</mat-label>
+          <textarea matInput placeholder="Descrição do projeto" formControlName="descriptionCtrl" rows="3"></textarea>
+        </mat-form-field>
+
+        <mat-form-field class="w-100 mb-3">
+          <mat-label>Senha</mat-label>
+          <input matInput placeholder="Senha" formControlName="passwordCtrl" required>
+          <mat-error>Por favor insira a senha</mat-error>
+        </mat-form-field> <!-- This closing tag was missing -->
+
+        <mat-form-field class="w-100 mb-3">
+          <mat-label>Tipo</mat-label>
+          <mat-select formControlName="typeCtrl">
+            <mat-option value="1">Administrador</mat-option>
+            <mat-option value="2">Desenvolvedor</mat-option>
+            <mat-option value="3">Tester</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <div>
+          <button mat-button matStepperNext>Próximo</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Concluído</ng-template>
+      <p>Você completou o preenchimento do formulário.</p>
+      <div>
+        <button mat-button matStepperPrevious>Voltar</button>
+        <button mat-button (click)="stepper.reset()">Reiniciar</button>
+        <button mat-button (click)="submit()">Enviar</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
+</div>

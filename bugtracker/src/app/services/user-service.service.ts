@@ -23,4 +23,8 @@ export class UserServiceService {
     const url = `${this.baseUrl}/Login`;
     return this.http.post(url, loginModel);
   }
+
+  getusers(): Observable<any>{
+    return this.http.get<any>(this.baseUrl);
+  }
 }

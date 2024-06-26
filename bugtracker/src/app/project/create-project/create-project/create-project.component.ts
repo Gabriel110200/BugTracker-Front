@@ -29,7 +29,7 @@ export class CreateProjectComponent {
       description: this.firstFormGroup.get('descriptionCtrl')?.value,
       image: this.firstFormGroup.get('imageCtrl')?.value,
       visibility: this.firstFormGroup.get('visibilityCtrl')?.value,
-      status: this.firstFormGroup.get('statusCtrl')?.value,
+      status: parseInt(this.firstFormGroup.get('statusCtrl')?.value),
       userId: localStorage.getItem('userId')
     };
 

@@ -1,0 +1,37 @@
+<app-header headerTitle="Users"></app-header>
+
+<div class="users">
+    <button *ngIf="users.length === 0" mat-raised-button color="primary" class="add-project-btn">Adicionar Usuário</button>
+  
+    <table *ngIf="users.length > 0" mat-table [dataSource]="users" class="mat-elevation-z8 table">
+  
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef class="text-center">Nome</th>
+        <td mat-cell *matCellDef="let user" class="text-center">{{ user.name }}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="role">
+        <th mat-header-cell *matHeaderCellDef class="text-center">Tipo</th>
+        <td mat-cell *matCellDef="let user" class="text-center">{{ user.role }}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef class="text-center">Ações</th>
+        <td mat-cell *matCellDef="let user; let i = index" class="text-center">
+          <button mat-icon-button (click)="onAdd()" class="text-center">
+            <mat-icon>add</mat-icon>
+          </button>
+          <button mat-icon-button (click)="onEdit(user)" class="text-center">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button (click)="onDelete(i)" class="text-center">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+  
