@@ -4,6 +4,7 @@ import { TicketService } from '../services/tickets/ticket.service';
 import { Ticket } from '../model/ticket.model';
 import { Router } from '@angular/router';
 import { TicketTypeEnum,TicketStatusEnum,TicketPriority } from '../enum/ticket.enum';
+import { ImpedimentService } from '../services/impediment/impediment.service';
 import Swal from 'sweetalert2';
 
 
@@ -17,12 +18,16 @@ export class TicketComponent {
 
   tickets: any[] = [];
   ticketForm!: FormGroup;
+  impedimentForm!: FormGroup;
   displayedColumns: string[] = ['name', 'status', 'type', 'description', 'actions'];
 
   TicketTypeEnum = TicketTypeEnum;
   TicketStatusEnum = TicketStatusEnum;
 
-  constructor(private fb: FormBuilder, private ticketService: TicketService,private router: Router) { }
+  constructor(private fb: FormBuilder, 
+              private ticketService: TicketService,
+              private router: Router, 
+              private impedimentService: ImpedimentService) { }
 
   ngOnInit() {
     this.initializeForm();
@@ -55,6 +60,13 @@ export class TicketComponent {
       status: ['', Validators.required],
       description: ['', Validators.required]
     });
+
+    this.impedimentForm = this.fb.group({
+      projectName: ['', [Validators.required, Validators.minLength(3)]],
+      description: ['', [Validators.required]], 
+      ticketId: []
+    });
+
   }
 
   onEdit(ticket: Ticket) {
@@ -80,11 +92,20 @@ export class TicketComponent {
   }
 
   onSubmit() {
-    if (this.ticketForm.valid) {
-      const newTicket: Ticket = this.ticketForm.value;
-      this.tickets.push(newTicket);
-      this.ticketForm.reset();
-    }
+    const impediment = this.impedimentForm.value;
+
+    this.impedimentService.registerImpediment(impediment).subscribe({
+      next: (response) => {
+        Swal.fire('Success', 'Impediment criado com sucesso!', 'success'); ;
+      },
+      error: (error) => {
+        Swal.fire('Error', 'Erro ao criar impediment', 'error');
+      }
+    });
+
+    console.log(this.impedimentForm);
+
+ 
   }
 
 }

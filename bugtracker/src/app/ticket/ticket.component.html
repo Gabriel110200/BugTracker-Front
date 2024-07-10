@@ -45,6 +45,13 @@
         <button mat-icon-button (click)="onAdd()" class="text-center">
           <mat-icon>add</mat-icon>
         </button>
+        <button mat-icon-button data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="text-center">
+          <mat-icon>block</mat-icon>
+        </button>
+        <button mat-icon-button class="text-center">
+          <mat-icon>visibility</mat-icon>
+        </button>
+
       </td>
     </ng-container>
 
@@ -52,4 +59,39 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
   </table>
+</div>
+
+
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Adicionar Impedimento</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="impedimentForm" >
+          <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+            <p style="font-size: 20px; color: white">Aguarde...</p>
+          </ngx-spinner>
+          <div class="mb-3">
+            <label for="name" class="form-label">Nome do Impedimento</label>
+            <input type="text" class="form-control" id="projectName" formControlName="projectName"
+              placeholder="Digite o nome do projeto">
+          </div>
+          <div class="mb-3">
+            <label for="description" class="form-label">Descrição do Impedimento</label>
+            <input type="text" class="form-control" id="description" formControlName="description"
+              placeholder="Digite a descrição do projeto">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+            <button type="submit" (click)="onSubmit()" class="btn btn-primary">Salvar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
